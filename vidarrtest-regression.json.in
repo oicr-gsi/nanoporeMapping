@@ -1,0 +1,40 @@
+[
+    {
+        "id": "TEST_MMinden_9161_FASTQ_INPUT",
+        "description": "runs the nanoporeMapping workflow, with nanopore fastq as input",
+        "arguments": {
+            "nanoporeMapping.sample": "MMinden_9161",
+            "nanoporeMapping.tumor": "MMinden_9161",
+            "nanoporeMapping.normal": "MMinden_9161",
+            "nanoporeMapping.samplefile" : "/.mounts/labs/gsiprojects/gsi/nanopore_data/MMinden_9161/MMinden_9161/fastq/MMinden_9161.fastq.gz",
+            "nanoporeMapping.smkConfig.generateConfig_modules": "nanopore-sv-analysis/20220505",
+            "nanoporeMapping.smkConfig.generateConfig.jobMemory": null,
+            "nanoporeMapping.smkConfig.generateConfig.timeout":null, 
+            "nanoporeMapping.mapping.modules": "nanopore-sv-analysis/20220505",
+            "nanoporeMapping.mapping.timeout": null,
+            "nanoporeMapping.mapping.jobMemory": null  
+        },
+        "engineArguments": {
+            "write_to_cache": false,
+            "read_from_cache": false
+          },
+        "metadata": {
+            "nanoporeMapping.bAlleleFrequency": {
+                "contents": [
+                    {
+                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_nanoporeMapping_TEST_MMinden_9161_FASTQ_INPUT_@JENKINSID@"
+                    }
+                ],
+                "type": "ALL"
+            }
+        },
+        "validators": [
+            {
+                "metrics_calculate": "@CHECKOUT@/tests/calculate.sh",
+                "metrics_compare": "@CHECKOUT@/tests/compare.sh",
+                "output_metrics": "/.mounts/labs/gsi/testdata/nanoporeFilterFastq/output_expectation/Mapping_MMinden_9161_FASTQ.metrics",
+                "type": "script"
+            }
+        ]
+    }
+]

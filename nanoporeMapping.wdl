@@ -37,12 +37,12 @@ workflow nanoporeMapping {
      author: "Gavin Peng"
      email: "gpeng@oicr.on.ca"
      description: "nanoporMapping, workflow that generates b_allele_frequency.bed file from input of nanopore fastq files, a wrapper of the workflow https://github.com/mike-molnar/nanopore-SV-analysis"
-     dependencies: 
+     dependencies: [
       {
         name: "nanopore_sv_analysis/20220505",
         url: "https://gitlab.oicr.on.ca/ResearchIT/modulator/-/blob/master/code/gsi/70_nanopore_sv_analysis.yaml"
       }
-
+     ]
      output_meta: {
        bAlleleFrequency: "output from rule mapping of the original workflow"
      }
