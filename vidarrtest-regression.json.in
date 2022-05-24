@@ -8,8 +8,8 @@
             "nanoporeMapping.normal": "MMinden_9161",
             "nanoporeMapping.samplefile" : "/.mounts/labs/gsiprojects/gsi/nanopore_data/MMinden_9161/MMinden_9161/fastq/MMinden_9161.fastq.gz",
             "nanoporeMapping.smkConfig.generateConfig_modules": "nanopore-sv-analysis/20220505",
-            "nanoporeMapping.smkConfig.generateConfig.jobMemory": null,
-            "nanoporeMapping.smkConfig.generateConfig.timeout":null, 
+            "nanoporeMapping.smkConfig.generateConfig_jobMemory": null,
+            "nanoporeMapping.smkConfig.generateConfig_timeout":null, 
             "nanoporeMapping.mapping.modules": "nanopore-sv-analysis/20220505",
             "nanoporeMapping.mapping.timeout": null,
             "nanoporeMapping.mapping.jobMemory": null  

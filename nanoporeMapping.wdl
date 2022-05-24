@@ -1,5 +1,5 @@
 version 1.0
-import "imports/smkConfig.wdl" as smkConfig
+import "imports/pull_smkConfig.wdl" as smkConfig
 
 workflow nanoporeMapping {
     input {

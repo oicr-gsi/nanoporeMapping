@@ -1,6 +1,8 @@
 version 1.0
 workflow smkConfig {
     input {
+        Int generateConfig_timeout = 24
+        Int generateConfig_jobMemory = 8
         String sample
         String normal
         String tumor
@@ -8,6 +10,8 @@ workflow smkConfig {
         String generateConfig_modules
     }
     parameter_meta {
+        generateConfig_timeout: "Timeout in hours, needed to override imposed limits"
+        generateConfig_jobMemory: "memory allocated for Job"
         sample: "name of all sample"
         normal: "name of the normal sample"
         tumor: "name of the tumor sample"
@@ -17,6 +21,8 @@ workflow smkConfig {
 
     call generateConfig{
         input:
+        timeout = generateConfig_timeout,
+        jobMemory = generateConfig_jobMemory,
         sample = sample,
         normal = normal,
         tumor = tumor,
