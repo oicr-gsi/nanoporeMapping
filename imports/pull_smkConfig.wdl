@@ -6,8 +6,7 @@ workflow smkConfig {
         String sample
         String normal
         String tumor
-        String samplefile
-        String generateConfig_modules
+        File samplefile
     }
     parameter_meta {
         generateConfig_timeout: "Timeout in hours, needed to override imposed limits"
@@ -15,8 +14,7 @@ workflow smkConfig {
         sample: "name of all sample"
         normal: "name of the normal sample"
         tumor: "name of the tumor sample"
-        samplefile: "sample file"
-        generateConfig_modules: "modules needed to run generateConfig"
+        samplefile: "sample file path"
     }
 
     call generateConfig{
@@ -26,9 +24,7 @@ workflow smkConfig {
         sample = sample,
         normal = normal,
         tumor = tumor,
-        samplefile = samplefile,
-        modules = generateConfig_modules
-           
+        samplefile = samplefile 
     }
 
     output {
@@ -58,27 +54,25 @@ workflow smkConfig {
         String sample
         String normal
         String tumor
-        String samplefile      
-        String modules
+        File samplefile      
         Int jobMemory = 8
-        Int timeout = 24     
+        Int timeout = 24 
    }
 
         parameter_meta {
         sample: "name of all sample"
         normal: "name of the normal sample"
         tumor: "name of the tumor sample"
-        samplefile: "sample file"
+        samplefile: "sample file path"
         jobMemory: "memory allocated for Job"
-        modules: "Names and versions of modules"
         timeout: "Timeout in hours, needed to override imposed limits"
         }
  
         command <<<
         set -euo pipefail
         cat <<EOT >> config.yaml
-        workflow_dir: "$NANOPORE_SV_ANALYSIS_ROOT"
-        conda_dir: "$NANOPORE_SV_ANALYSIS_ROOT/bin"
+        workflow_dir: "/.mounts/labs/gsi/modulator/sw/Ubuntu18.04/nanopore-sv-analysis-20220505"
+        conda_dir: "/.mounts/labs/gsi/modulator/sw/Ubuntu18.04/nanopore-sv-analysis-20220505/bin"
         samples: [~{sample}]
         normals: [~{normal}]
         tumors: [~{tumor}]
@@ -87,7 +81,6 @@ workflow smkConfig {
         >>>  
     runtime {
     memory:  "~{jobMemory} GB"
-    modules: "~{modules}"
     timeout: "~{timeout}"
     }
     output {

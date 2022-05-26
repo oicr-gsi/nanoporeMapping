@@ -6,7 +6,7 @@ workflow nanoporeMapping {
         String sample
         String normal
         String tumor
-        String samplefile  
+        File samplefile  
     }
     parameter_meta {
         sample: "name of sample"

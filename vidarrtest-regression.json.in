@@ -3,10 +3,21 @@
         "id": "TEST_MMinden_9161_FASTQ_INPUT",
         "description": "runs the nanoporeMapping workflow, with nanopore fastq as input",
         "arguments": {
+	"nanoporeMapping.samplefile": {
+         "contents": {
+            "configuration": "/.mounts/labs/gsiprojects/gsi/nanopore_data/MMinden_9161/MMinden_9161/fastq/MMinden_9161.fastq",
+            "externalIds": [
+                {
+                    "id": "TEST",
+                    "provider": "TEST"
+                }
+            ]
+        },
+        "type": "EXTERNAL"
+      },
             "nanoporeMapping.sample": "MMinden_9161",
             "nanoporeMapping.tumor": "MMinden_9161",
             "nanoporeMapping.normal": "MMinden_9161",
-            "nanoporeMapping.samplefile" : "/.mounts/labs/gsiprojects/gsi/nanopore_data/MMinden_9161/MMinden_9161/fastq/MMinden_9161.fastq.gz",
             "nanoporeMapping.smkConfig.generateConfig_modules": "nanopore-sv-analysis/20220505",
             "nanoporeMapping.smkConfig.generateConfig_jobMemory": null,
             "nanoporeMapping.smkConfig.generateConfig_timeout":null, 
