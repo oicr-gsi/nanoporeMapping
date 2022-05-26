@@ -18,7 +18,6 @@
             "nanoporeMapping.sample": "MMinden_9161",
             "nanoporeMapping.tumor": "MMinden_9161",
             "nanoporeMapping.normal": "MMinden_9161",
-            "nanoporeMapping.smkConfig.generateConfig_modules": "nanopore-sv-analysis/20220505",
             "nanoporeMapping.smkConfig.generateConfig_jobMemory": null,
             "nanoporeMapping.smkConfig.generateConfig_timeout":null, 
             "nanoporeMapping.mapping.modules": "nanopore-sv-analysis/20220505",
