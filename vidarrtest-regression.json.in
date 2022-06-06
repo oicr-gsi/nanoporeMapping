@@ -20,7 +20,7 @@
             "nanoporeMapping.normal": "MMinden_9161",
             "nanoporeMapping.smkConfig.generateConfig_jobMemory": null,
             "nanoporeMapping.smkConfig.generateConfig_timeout":null, 
-            "nanoporeMapping.mapping.modules": "nanopore-sv-analysis/20220505",
+            "nanoporeMapping.mapping.modules": "conda/4.11.0",
             "nanoporeMapping.mapping.timeout": null,
             "nanoporeMapping.mapping.jobMemory": null  
         },
