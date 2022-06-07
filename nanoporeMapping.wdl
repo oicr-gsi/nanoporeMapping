@@ -1,12 +1,12 @@
 version 1.0
-import "imports/pull_smkConfig.wdl" as smkConfig
+import "imports/smkConfig.wdl" as smkConfig
 
 workflow nanoporeMapping {
     input {
         String sample
         String normal
         String tumor
-        File samplefile  
+        String samplefile  
     }
     parameter_meta {
         sample: "name of sample"
@@ -69,8 +69,8 @@ workflow nanoporeMapping {
 
         command <<<
         set -euo pipefail
-        module load nanopore-sv-analysis
-        unset LD_LIBRARY_PATH
+        eval "$(conda shell.bash hook)"
+        conda activate  /.mounts/labs/gsi/modulator/sw/Ubuntu18.04/nanopore-sv-analysis-20220505
         cp $NANOPORE_SV_ANALYSIS_ROOT/Snakefile .
         cp ~{config} .
         $NANOPORE_SV_ANALYSIS_ROOT/bin/snakemake --jobs 8 --rerun-incomplete --keep-going --latency-wait 60 --cluster "qsub -cwd -V -o snakemake.output.log -e snakemake.error.log  -P gsi -pe smp {threads} -l h_vmem={params.memory_per_thread} -l h_rt={params.run_time} -b y "  mapping
