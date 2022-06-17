@@ -18,8 +18,8 @@
             "nanoporeMapping.sample": "MMinden_9161",
             "nanoporeMapping.tumor": "MMinden_9161",
             "nanoporeMapping.normal": "MMinden_9161",
-            "nanoporeMapping.smkConfig.generateConfig_jobMemory": null,
-            "nanoporeMapping.smkConfig.generateConfig_timeout":null, 
+            "nanoporeMapping.generateConfig.jobMemory": null,
+            "nanoporeMapping.generateConfig.timeout":null, 
             "nanoporeMapping.mapping.modules": "conda/4.11.0",
             "nanoporeMapping.mapping.timeout": null,
             "nanoporeMapping.mapping.jobMemory": null  

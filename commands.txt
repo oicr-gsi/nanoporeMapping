@@ -1,0 +1,28 @@
+## Commands
+This section lists command(s) run by WORKFLOW workflow
+
+* Running WORKFLOW
+
+=== Description here ===.
+
+<<<
+        set -euo pipefail
+        cat <<EOT >> config.yaml
+        workflow_dir: "/.mounts/labs/gsi/modulator/sw/Ubuntu18.04/nanopore-sv-analysis-20220505"
+        conda_dir: "/.mounts/labs/gsi/modulator/sw/Ubuntu18.04/nanopore-sv-analysis-20220505/bin"
+        reference_dir: "/.mounts/labs/gsi/modulator/sw/data/hg38-nanopore-sv-reference-20220505"
+        samples: [~{sample}]
+        normals: [~{normal}]
+        tumors: [~{tumor}]
+        ~{sample}: ~{samplefile}
+        EOT
+        >>>
+<<<
+        module load nanopore-sv-analysis
+        unset LD_LIBRARY_PATH
+        set -euo pipefail
+        cp $NANOPORE_SV_ANALYSIS_ROOT/Snakefile .
+        cp ~{config} .
+        $NANOPORE_SV_ANALYSIS_ROOT/bin/snakemake --jobs 8 --rerun-incomplete --keep-going --latency-wait 60 --cluster "qsub -cwd -V -o snakemake.output.log -e snakemake.error.log  -P gsi -pe smp {threads} -l h_vmem={params.memory_per_thread} -l h_rt={params.run_time} -b y "  mapping
+
+        >>>
