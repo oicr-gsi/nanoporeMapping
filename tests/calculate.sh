@@ -5,5 +5,5 @@ set -euo pipefail
 cd $1
 
 #find all fastq.gz files, return their md5sums to std out, list all file types
-find ./mapped -name *frequency.bed -xtype f -exec sh -c "cat {} | grep -v ^# | md5sum" \;
+find ./*/mapped -name *frequency.bed -xtype f \;
 ls ./mapped | sed 's/.*\.//' | sort | uniq -c
