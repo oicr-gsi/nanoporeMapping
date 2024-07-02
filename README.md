@@ -25,14 +25,8 @@ Parameter|Value|Description
 `sample`|String|name of sample
 `normal`|String|name of the normal sample
 `tumor`|String|name of the tumor sample
-`samplefile`|String|sample file
+`samplefile`|File|sample file
 `mapping.modules`|String|Names and versions of modules
-
-
-#### Optional workflow parameters:
-Parameter|Value|Default|Description
----|---|---|---
-
 
 #### Optional task parameters:
 Parameter|Value|Default|Description
@@ -45,19 +39,19 @@ Parameter|Value|Default|Description
 
 ### Outputs
 
-Output | Type | Description
----|---|---
-`bAlleleFrequency`|File|output from rule mapping of the original workflow
+Output | Type | Description | Labels
+---|---|---|---
+`bAlleleFrequency`|File|output from rule mapping of the original workflow|vidarr_label: bAlleleFrequency
 
 
 ## Commands
- This section lists command(s) run by WORKFLOW workflow
+This section lists command(s) run by nanoporemapping workflow
  
- * Running WORKFLOW
+* Running nanoporemapping
  
- === Description here ===.
+### Configure
  
- <<<
+```
          set -euo pipefail
          cat <<EOT >> config.yaml
          workflow_dir: "/.mounts/labs/gsi/modulator/sw/Ubuntu18.04/nanopore-sv-analysis-20220505"
@@ -68,8 +62,11 @@ Output | Type | Description
          tumors: [~{tumor}]
          ~{sample}: ~{samplefile}
          EOT
-         >>>
- <<<
+```
+ 
+### Run the analysis as a Snakemake process
+ 
+```
          module load nanopore-sv-analysis
          unset LD_LIBRARY_PATH
          set -euo pipefail
@@ -77,8 +74,8 @@ Output | Type | Description
          cp ~{config} .
          $NANOPORE_SV_ANALYSIS_ROOT/bin/snakemake --jobs 8 --rerun-incomplete --keep-going --latency-wait 60 --cluster "qsub -cwd -V -o snakemake.output.log -e snakemake.error.log  -P gsi -pe smp {threads} -l h_vmem={params.memory_per_thread} -l h_rt={params.run_time} -b y "  mapping
  
-         >>>
- ## Support
+```
+## Support
 
 For support, please file an issue on the [Github project](https://github.com/oicr-gsi) or send an email to gsi@oicr.on.ca .
 

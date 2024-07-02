@@ -47,9 +47,12 @@ workflow nanoporeMapping {
         url: "https://gitlab.oicr.on.ca/ResearchIT/modulator/-/blob/master/data/gsi/50_hg38_nanopore_sv_reference.yaml"
       }
      ]
-     output_meta: {
-       bAlleleFrequency: "output from rule mapping of the original workflow"
-     }
+    output_meta: {
+    bAlleleFrequency: {
+        description: "output from rule mapping of the original workflow",
+        vidarr_label: "bAlleleFrequency"
+    }
+}
     }
 }
 

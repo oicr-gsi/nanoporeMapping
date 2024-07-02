@@ -1,11 +1,11 @@
 ## Commands
-This section lists command(s) run by WORKFLOW workflow
+This section lists command(s) run by nanoporemapping workflow
 
-* Running WORKFLOW
+* Running nanoporemapping
 
-=== Description here ===.
+### Configure
 
-<<<
+```
         set -euo pipefail
         cat <<EOT >> config.yaml
         workflow_dir: "/.mounts/labs/gsi/modulator/sw/Ubuntu18.04/nanopore-sv-analysis-20220505"
@@ -16,8 +16,11 @@ This section lists command(s) run by WORKFLOW workflow
         tumors: [~{tumor}]
         ~{sample}: ~{samplefile}
         EOT
-        >>>
-<<<
+```
+
+### Run the analysis as a Snakemake process
+
+```
         module load nanopore-sv-analysis
         unset LD_LIBRARY_PATH
         set -euo pipefail
@@ -25,4 +28,4 @@ This section lists command(s) run by WORKFLOW workflow
         cp ~{config} .
         $NANOPORE_SV_ANALYSIS_ROOT/bin/snakemake --jobs 8 --rerun-incomplete --keep-going --latency-wait 60 --cluster "qsub -cwd -V -o snakemake.output.log -e snakemake.error.log  -P gsi -pe smp {threads} -l h_vmem={params.memory_per_thread} -l h_rt={params.run_time} -b y "  mapping
 
-        >>>
+```
