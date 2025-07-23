@@ -1,11 +1,11 @@
 [
     {
-        "id": "TEST_MMinden_9161_FASTQ_INPUT",
+        "id": "TEST_MMinden_FASTQ_INPUT",
         "description": "runs the nanoporeMapping workflow, with nanopore fastq as input",
         "arguments": {
 	"nanoporeMapping.samplefile": {
          "contents": {
-            "configuration": "/.mounts/labs/gsi/testdata/nanoporeMapping/input_data/MMinden_9161.fastq",
+            "configuration": "/.mounts/labs/gsi/testdata/nanoporeMapping/test_inputs/MMinden_Test.fastq",
             "externalIds": [
                 {
                     "id": "TEST",
@@ -15,9 +15,9 @@
         },
         "type": "EXTERNAL"
       },
-            "nanoporeMapping.sample": "MMinden_9161",
-            "nanoporeMapping.tumor": "MMinden_9161",
-            "nanoporeMapping.normal": "MMinden_9161",
+            "nanoporeMapping.sample": "MMinden_Test",
+            "nanoporeMapping.tumor": "MMinden_Test",
+            "nanoporeMapping.normal": "MMinden_Test",
             "nanoporeMapping.generateConfig.jobMemory": null,
             "nanoporeMapping.generateConfig.timeout":null, 
             "nanoporeMapping.mapping.modules": "conda/4.11.0",
@@ -32,7 +32,7 @@
             "nanoporeMapping.bAlleleFrequency": {
                 "contents": [
                     {
-                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_nanoporeMapping_TEST_MMinden_9161_FASTQ_INPUT_@JENKINSID@"
+                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_nanoporeMapping_TEST_MMinden_FASTQ_INPUT_@JENKINSID@"
                     }
                 ],
                 "type": "ALL"
@@ -42,7 +42,7 @@
             {
                 "metrics_calculate": "@CHECKOUT@/tests/calculate.sh",
                 "metrics_compare": "@CHECKOUT@/tests/compare.sh",
-                "output_metrics": "/.mounts/labs/gsi/testdata/nanoporeMapping/output_expectation/Mapping_MMinden_9161_FASTQ.metrics",
+                "output_metrics": "/.mounts/labs/gsi/testdata/nanoporeMapping/output_metrics/workflow_test_01.metrics",
                 "type": "script"
             }
         ]
